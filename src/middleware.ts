@@ -12,11 +12,10 @@ export async function middleware(request: NextRequest) {
   ) {
     return NextResponse.redirect(new URL("/", request.url));
   }
-
   if (request.nextUrl.pathname.startsWith("/dashboard") && !token) {
     return NextResponse.redirect(new URL("/", request.url));
   }
 }
 export const config = {
-  matcher: ["/login", "/register", "/dashboard"],
+  matcher: ["/login", "/register", "/dashboard/:path*"],
 };
